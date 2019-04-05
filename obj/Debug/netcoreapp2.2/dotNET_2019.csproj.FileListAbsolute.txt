@@ -31,3 +31,8 @@ D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\dotNET_2019.Views.pdb
 D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\dotNET_2019.dll
 D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\dotNET_2019.pdb
 D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\dotNET_2019.csproj.CopyComplete
+D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Livros\Create.g.cshtml.cs
+D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Livros\Delete.g.cshtml.cs
+D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Livros\Details.g.cshtml.cs
+D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Livros\Edit.g.cshtml.cs
+D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Livros\Index.g.cshtml.cs

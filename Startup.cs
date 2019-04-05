@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using dotNET_2019.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using dotNET_2019.Dados;
 
 namespace dotNET_2019
 {
@@ -38,6 +39,9 @@ namespace dotNET_2019
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlite(
                     Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddDbContext<BibliotecaDbContext>();
+
             services.AddDefaultIdentity<IdentityUser>()
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
