@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using dotNET_2019.Dados;
 using dotNET_2019.Models;
+using dotNET_2019.Utils;
 
 namespace dotNET_2019.Controllers
 {
@@ -59,8 +60,14 @@ namespace dotNET_2019.Controllers
                 return NotFound();
             }
 
-            var livro = await _context.Livro
-                .FirstOrDefaultAsync(m => m.LivroID == id);
+            // var livro = await _context.Livro
+            //     .FirstOrDefaultAsync(m => m.LivroID == id);
+
+            var livro = await _context.Livro.AsNoTracking()
+                    .Include(l => l.LivAutor)
+                    .ThenInclude(li => li.Autor)
+                    .SingleOrDefaultAsync(m => m.LivroID == id);
+
             if (livro == null)
             {
                 return NotFound();
@@ -72,7 +79,8 @@ namespace dotNET_2019.Controllers
         // GET: Livros/Create
         public IActionResult Create()
         {
-            return View();
+            ViewBag.Autores = new Listagens(_context).AutoresCheckBox();
+            return View(new Livro());
         }
 
         // POST: Livros/Create
@@ -80,16 +88,25 @@ namespace dotNET_2019.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LivroID,Titulo,Quantidade")] Livro livro)
+        public async Task<IActionResult> Create([Bind("LivroID,Foto,Quantidade,Titulo,AutorUnico")] Livro livro, string[] selectedAutores)
         {
             if (ModelState.IsValid)
             {
+                if (selectedAutores != null)
+                {
+                    livro.LivAutor = new List<LivroAutor>();
+
+                    foreach (var idAutor in selectedAutores)
+                        livro.LivAutor.Add(new LivroAutor() { AutorID = int.Parse(idAutor), Livro = livro });
+                }
+
                 _context.Add(livro);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Index");
             }
             return View(livro);
         }
+
 
         // GET: Livros/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -99,7 +116,16 @@ namespace dotNET_2019.Controllers
                 return NotFound();
             }
 
-            var livro = await _context.Livro.FindAsync(id);
+            var autoresAux = new Listagens(_context).AutoresCheckBox();
+
+            var livro = await _context.Livro.Include(l => l.LivAutor)
+                .SingleOrDefaultAsync(m => m.LivroID == id);
+
+            autoresAux.ForEach(a => a.Checked = livro.LivAutor.Any(l => l.AutorID == a.Value));
+
+            ViewBag.Autores = autoresAux;
+
+            // var livro = await _context.Livro.FindAsync(id);
             if (livro == null)
             {
                 return NotFound();
@@ -112,7 +138,7 @@ namespace dotNET_2019.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LivroID,Titulo,Quantidade")] Livro livro)
+        public async Task<IActionResult> Edit(int id, [Bind("LivroID,Titulo,Quantidade")] Livro livro, string[] selectedAutores)
         {
             if (id != livro.LivroID)
             {
@@ -123,6 +149,19 @@ namespace dotNET_2019.Controllers
             {
                 try
                 {
+                    var livroAutores = _context.LivroAutor.AsNoTracking().Where(la => la.LivroID == livro.LivroID);
+
+                    _context.LivroAutor.RemoveRange(livroAutores);
+                    await _context.SaveChangesAsync();
+
+                    if (selectedAutores != null)
+                    {
+                        livro.LivAutor = new List<LivroAutor>();
+
+                        foreach (var idAutor in selectedAutores)
+                            livro.LivAutor.Add(new LivroAutor() { AutorID = int.Parse(idAutor), Livro = livro });
+                    }
+
                     _context.Update(livro);
                     await _context.SaveChangesAsync();
                 }

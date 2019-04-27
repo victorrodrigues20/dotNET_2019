@@ -38,3 +38,8 @@ D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Livros\Edit.g.cshtml.c
 D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Livros\Index.g.cshtml.cs
 D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Calculadora\Index.g.cshtml.cs
 D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Calculadora\Somar.g.cshtml.cs
+D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Autores\Create.g.cshtml.cs
+D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Autores\Delete.g.cshtml.cs
+D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Autores\Details.g.cshtml.cs
+D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Autores\Edit.g.cshtml.cs
+D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Autores\Index.g.cshtml.cs

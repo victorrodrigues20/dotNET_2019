@@ -2764,6 +2764,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views\\Autores\\Edit.cshtml",
+      "TargetPath": "Views\\Autores\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views\\Livros\\Index.cshtml",
       "TargetPath": "Views\\Livros\\Index.cshtml",
       "FileKind": "mvc"
@@ -2774,6 +2779,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views\\Autores\\Delete.cshtml",
+      "TargetPath": "Views\\Autores\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Autores\\Create.cshtml",
+      "TargetPath": "Views\\Autores\\Create.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
       "FileKind": "mvc"
@@ -2781,6 +2796,11 @@
     {
       "FilePath": "Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Autores\\Details.cshtml",
+      "TargetPath": "Views\\Autores\\Details.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -2821,6 +2841,11 @@
     {
       "FilePath": "Views\\Calculadora\\Index.cshtml",
       "TargetPath": "Views\\Calculadora\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Autores\\Index.cshtml",
+      "TargetPath": "Views\\Autores\\Index.cshtml",
       "FileKind": "mvc"
     },
     {
