@@ -25,7 +25,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Titulo)
+                <a asp-action="Index" asp-route-ordenacao="@ViewBag.TituloSortParam">@Html.DisplayNameFor(model => model.Titulo)</a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Quantidade)

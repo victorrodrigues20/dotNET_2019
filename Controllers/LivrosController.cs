@@ -21,8 +21,11 @@ namespace dotNET_2019.Controllers
 
         // GET: Livros
         // GET: Livros
-        public async Task<IActionResult> Index(string filtroPesquisa)
+        // GET: Livros
+        public async Task<IActionResult> Index(string filtroPesquisa, string ordenacao)
         {
+            ViewBag.TituloSortParam = String.IsNullOrEmpty(ordenacao) ? "titulo_desc" : "";
+
             ViewBag.filtroPesquisa = filtroPesquisa;
 
             var livros = from l in _context.Livro
@@ -33,8 +36,20 @@ namespace dotNET_2019.Controllers
                 livros = livros.Where(s => s.Titulo.ToUpper().Contains(filtroPesquisa.ToUpper()));
             }
 
+            switch (ordenacao)
+            {
+                case "titulo_desc":
+                    livros = livros.OrderByDescending(s => s.Titulo);
+                    break;
+                default:
+                    livros = livros.OrderBy(s => s.Titulo);
+                    break;
+            }
+
             return View(await livros.ToListAsync());
         }
+
+
 
         // GET: Livros/Details/5
         public async Task<IActionResult> Details(int? id)
