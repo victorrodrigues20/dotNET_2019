@@ -1,0 +1,45 @@
+<h1>Minha Calculadora</h1> 
+
+<!-- <form method="get" action="@Url.Action("Somar", "Calculadora")">
+
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text" >Num 1</span>
+  </div>
+  <input type="text" class="form-control" name="n1">
+</div>
+
+<br>
+
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Num 2</span>
+  </div>
+  <input type="text" class="form-control" name="n2">
+</div>
+<br>
+<button type="submit" class="btn btn-primary">Calcular</button>
+</form> -->
+
+<form>
+<!-- <form method="post" action="@Url.Action("Somar", "Calculadora")"> -->
+
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text" >Num 1</span>
+  </div>
+  <input type="text" class="form-control" name="n1">
+</div>
+
+<br>
+
+<div class="input-group">
+  <div class="input-group-prepend">
+    <span class="input-group-text">Num 2</span>
+  </div>
+  <input type="text" class="form-control" name="n2">
+</div>
+<br>
+<button type="submit" class="btn btn-primary" asp-area=""
+asp-controller="Calculadora" asp-action="Somar">Calcular</button>
+</form>
