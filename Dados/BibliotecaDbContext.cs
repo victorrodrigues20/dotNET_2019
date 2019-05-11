@@ -29,6 +29,21 @@ namespace dotNET_2019.Dados
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.3-servicing-35854");
 
+            #region SistemaUsuario
+            modelBuilder.Entity<SistemaUsuario>()
+                .HasKey(bc => new { bc.SistemaID, bc.UsuarioID });
+
+            modelBuilder.Entity<SistemaUsuario>()
+                .HasOne(bc => bc.Sistemas)
+                .WithMany(b => b.SistUsuarios)
+                .HasForeignKey(bc => bc.SistemaID);
+
+            modelBuilder.Entity<SistemaUsuario>()
+                .HasOne(bc => bc.Usuarios)
+                .WithMany(c => c.SistUsuarios)
+                .HasForeignKey(bc => bc.UsuarioID);
+            #endregion
+
             #region LivroAutor
 
             //// Gera Chave Primaria Composta
@@ -46,10 +61,39 @@ namespace dotNET_2019.Dados
                 .HasForeignKey(bc => bc.LivroID);
 
             #endregion
+
+            #region LivroEmprestimo
+
+            modelBuilder.Entity<LivroEmprestimo>()
+                .HasKey(bc => new { bc.LivroID, bc.EmprestimoID });
+
+            modelBuilder.Entity<LivroEmprestimo>()
+                .HasOne(bc => bc.Livro)
+                .WithMany(b => b.LivEmprestimo)
+                .HasForeignKey(bc => bc.LivroID);
+
+            modelBuilder.Entity<LivroEmprestimo>()
+                .HasOne(bc => bc.Emprestimo)
+                .WithMany(c => c.LivEmprestimo)
+                .HasForeignKey(bc => bc.EmprestimoID);
+
+            #endregion
+
+            base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<dotNET_2019.Models.Livro> Livro { get; set; }
+
+        //public DbSet<dotNET_2019.Models.Categoria> Categoria { get; set; }
+
         public DbSet<dotNET_2019.Models.Autor> Autor { get; set; }
+
+        public DbSet<dotNET_2019.Models.Emprestimo> Emprestimo { get; set; }
+
+        public DbSet<dotNET_2019.Models.Usuario> Usuario { get; set; }
+
         public DbSet<dotNET_2019.Models.LivroAutor> LivroAutor { get; set; }
+
+        public DbSet<dotNET_2019.Models.LivroEmprestimo> LivroEmprestimo { get; set; }
     }
 }

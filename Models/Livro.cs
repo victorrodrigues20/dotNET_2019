@@ -19,7 +19,7 @@ namespace dotNET_2019.Models
 
         public ICollection<LivroAutor> LivAutor { get; set; }
 
-        //public ICollection<LivroEmprestimo> LivEmprestimo { get; set; }
+        public ICollection<LivroEmprestimo> LivEmprestimo { get; set; }
 
     }
 }

@@ -23,11 +23,14 @@ namespace dotNET_2019.Controllers
         // GET: Livros
         // GET: Livros
         // GET: Livros
-        public async Task<IActionResult> Index(string filtroPesquisa, string ordenacao)
+        public async Task<IActionResult> Index(string filtroPesquisa, string ordenacao, 
+        int? filtroQuantidadeMin, int? filtroQuantidadeMax)
         {
             ViewBag.TituloSortParam = String.IsNullOrEmpty(ordenacao) ? "titulo_desc" : "";
 
             ViewBag.filtroPesquisa = filtroPesquisa;
+            ViewBag.filtroQuantidadeMin = filtroQuantidadeMin;
+            ViewBag.filtroQuantidadeMax = filtroQuantidadeMax;
 
             var livros = from l in _context.Livro
                          select l;
@@ -35,6 +38,16 @@ namespace dotNET_2019.Controllers
             if (!String.IsNullOrEmpty(filtroPesquisa))
             {
                 livros = livros.Where(s => s.Titulo.ToUpper().Contains(filtroPesquisa.ToUpper()));
+            }
+
+            if (filtroQuantidadeMin != null)
+            {
+                livros = livros.Where(s => s.Quantidade >= filtroQuantidadeMin);
+            }
+
+            if (filtroQuantidadeMax != null)
+            {
+                livros = livros.Where(s => s.Quantidade <= filtroQuantidadeMax);
             }
 
             switch (ordenacao)
