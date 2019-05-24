@@ -21,6 +21,12 @@
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Quantidade)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Foto)
+        </dt>
+        <dd>
+            <img src="~/@Model.Foto" alt="Imagem @Model.Titulo" />
+        </dd>
     </dl>
 </div>
 <dd>

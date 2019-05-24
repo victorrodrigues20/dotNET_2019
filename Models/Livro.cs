@@ -17,6 +17,8 @@ namespace dotNET_2019.Models
         [Range(1, 300, ErrorMessage = "O campo {0} deve estar entre {1} e {2}")]
         public int Quantidade { get; set; }
 
+        public string Foto { get; set; }
+
         public ICollection<LivroAutor> LivAutor { get; set; }
 
         public ICollection<LivroEmprestimo> LivEmprestimo { get; set; }

@@ -19,6 +19,7 @@
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
+            <th>#</th>
             <th>Produto</th>
             <th>Quantidade</th>
         </tr>
@@ -27,6 +28,14 @@
 @foreach (var item in Model)
 {
         <tr>
+            <td>
+                @if(item.Foto != null) {
+                    <img class="card-img-top" src="~/@item.Foto" style="width:50px;height:50px" />
+                } 
+                else {
+                    <img class="card-img-top" src="https://picsum.photos/50/50/?random" style="width:50px;height:50px" />
+                }
+            </td>
             <td>@item.Titulo</td>
             <td>@item.Quantidade</td>
         </tr>

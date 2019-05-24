@@ -8,6 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using dotNET_2019.Dados;
 using dotNET_2019.Models;
 using dotNET_2019.Utils;
+using Microsoft.AspNetCore.Http;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace dotNET_2019.Controllers
 {
@@ -15,9 +18,12 @@ namespace dotNET_2019.Controllers
     {
         private readonly BibliotecaDbContext _context;
 
-        public LivrosController(BibliotecaDbContext context)
+        private IHostingEnvironment _hostingEnvironment;
+
+        public LivrosController(BibliotecaDbContext context, IHostingEnvironment environment)
         {
             _context = context;
+            _hostingEnvironment = environment;
         }
 
         // GET: Livros
@@ -101,7 +107,7 @@ namespace dotNET_2019.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LivroID,Foto,Quantidade,Titulo,AutorUnico")] Livro livro, string[] selectedAutores)
+        public async Task<IActionResult> Create([Bind("LivroID,Foto,Quantidade,Titulo,AutorUnico")] Livro livro, string[] selectedAutores, List<IFormFile> files)
         {
             if (ModelState.IsValid)
             {
@@ -115,11 +121,54 @@ namespace dotNET_2019.Controllers
 
                 _context.Add(livro);
                 await _context.SaveChangesAsync();
+
+                livro.Foto = await RealizarUploadImagens(files, livro.LivroID);
+                _context.Update(livro);
+                await _context.SaveChangesAsync();
+
                 return RedirectToAction("Index");
             }
             return View(livro);
         }
 
+        private async Task<string> RealizarUploadImagens(List<IFormFile> files, int idLivro)
+        {
+            // Verifica se existem arquivos selecionados
+            if (files.Count > 0)
+            {
+                // Variável para armazenar o caminho de upload das imagens
+                var pathUpload = Path.Combine(_hostingEnvironment.WebRootPath, "uploads");
+
+                // Se o caminho não existe então cria
+                if (!Directory.Exists(pathUpload))
+                    Directory.CreateDirectory(pathUpload);
+
+                // Para cada arquivo faça
+                foreach (var file in files)
+                {
+                    // Verifica se o arquivo possui informação
+                    if (file.Length > 0)
+                    {
+                        // Concatena o nome do arquivo
+                        var nomeArquivo = "livro_" + idLivro + Path.GetExtension(file.FileName);
+                        // Concatena o caminho do arquivo
+                        var pathFile = Path.Combine(pathUpload, nomeArquivo);
+
+                        // Realiza a cópia
+                        using (var fileStream = new FileStream(pathFile, FileMode.Create))
+                        {
+                            await file.CopyToAsync(fileStream);
+                        }
+
+                        // Retorna o caminho do arquivo que será salvo
+                        // no banco de dados
+                        return "uploads//" + Path.GetFileName(pathFile);
+                    }
+                }
+            }
+
+            return null;
+        }
 
         // GET: Livros/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -151,7 +200,7 @@ namespace dotNET_2019.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LivroID,Titulo,Quantidade")] Livro livro, string[] selectedAutores)
+        public async Task<IActionResult> Edit(int id, [Bind("LivroID,Titulo,Quantidade")] Livro livro, string[] selectedAutores, List<IFormFile> files)
         {
             if (id != livro.LivroID)
             {
@@ -174,6 +223,8 @@ namespace dotNET_2019.Controllers
                         foreach (var idAutor in selectedAutores)
                             livro.LivAutor.Add(new LivroAutor() { AutorID = int.Parse(idAutor), Livro = livro });
                     }
+
+                    livro.Foto = await RealizarUploadImagens(files, livro.LivroID);
 
                     _context.Update(livro);
                     await _context.SaveChangesAsync();

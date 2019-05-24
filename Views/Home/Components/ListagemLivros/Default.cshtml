@@ -9,7 +9,15 @@
     {
         <div class="col-md-4 mt-3">
             <div class="card">
-                <img class="card-img-top" src="https://picsum.photos/200/150/?random">
+
+
+                @if(item.Foto != null) {
+                    <img class="card-img-top" src="~/@item.Foto" style="width:318px;height:238px" />
+                } 
+                else {
+                    <img class="card-img-top" src="https://picsum.photos/200/150/?random" />
+                }
+
                 <div class="card-body">
                     <h5 class="card-title">@item.Titulo</h5>
                     <p class="card-text">Quantidade: @item.Quantidade</p>
