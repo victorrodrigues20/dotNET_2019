@@ -43,3 +43,5 @@ D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\dotNET_2019.Views.pdb
 D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\dotNET_2019.dll
 D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\dotNET_2019.pdb
 D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\dotNET_2019.csproj.CopyComplete
+D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Home\Components\ListagemLivros\Default.g.cshtml.cs
+D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Carrinho\Index.g.cshtml.cs

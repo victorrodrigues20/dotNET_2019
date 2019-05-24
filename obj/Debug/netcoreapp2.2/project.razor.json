@@ -2830,6 +2830,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "Views\\Carrinho\\Index.cshtml",
+      "TargetPath": "Views\\Carrinho\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "Views\\Autores\\Create.cshtml",
       "TargetPath": "Views\\Autores\\Create.cshtml",
       "FileKind": "mvc"
@@ -2872,6 +2877,11 @@
     {
       "FilePath": "Views\\Livros\\Delete.cshtml",
       "TargetPath": "Views\\Livros\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "Views\\Home\\Components\\ListagemLivros\\Default.cshtml",
+      "TargetPath": "Views\\Home\\Components\\ListagemLivros\\Default.cshtml",
       "FileKind": "mvc"
     },
     {

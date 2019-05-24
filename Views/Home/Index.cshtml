@@ -39,6 +39,13 @@
         </a>
     </div>
 
+    <p class="lead">Verifique os livros da nossa Biblioteca abaixo.</p>
 
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <div>
+        @await Component.InvokeAsync("ListagemLivros", "")
+    </div>
+
+
+
+    <p>Acesse o GitHub desse projeto: <a href="https://github.com/victorrodrigues20/dotNET_2019/"></a>.</p>
 </div>

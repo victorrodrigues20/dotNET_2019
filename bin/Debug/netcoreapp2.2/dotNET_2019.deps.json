@@ -26,9 +26,11 @@
         "dependencies": {
           "Microsoft.AspNetCore.App": "2.2.0",
           "Microsoft.AspNetCore.Razor.Design": "2.2.0",
+          "Microsoft.AspNetCore.Session": "2.2.0",
           "Microsoft.EntityFrameworkCore.Design": "2.2.3",
           "Microsoft.EntityFrameworkCore.Sqlite": "2.2.3",
           "Microsoft.EntityFrameworkCore.Tools": "2.2.3",
+          "Microsoft.Extensions.Caching.Memory": "2.2.0",
           "Microsoft.NETCore.App": "2.2.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.2.3",
           "Microsoft.VisualStudio.Web.CodeGeneration.Tools": "2.0.4"

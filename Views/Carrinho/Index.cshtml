@@ -1,0 +1,35 @@
+@model IEnumerable<dotNET_2019.Models.Livro>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Carrinho</h1>
+
+@if (Model == null || Model.Count() == 0)
+{
+    <br />
+    <h3>Carrinho está vazio</h3>
+
+}
+
+
+<br />
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Quantidade</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+        <tr>
+            <td>@item.Titulo</td>
+            <td>@item.Quantidade</td>
+        </tr>
+}
+    </tbody>
+</table>
