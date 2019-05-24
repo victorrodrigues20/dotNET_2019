@@ -14,6 +14,7 @@ using dotNET_2019.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using dotNET_2019.Dados;
+using dotNET_2019.Services;
 
 namespace dotNET_2019
 {
@@ -50,6 +51,8 @@ namespace dotNET_2019
             services.AddDistributedMemoryCache();
             services.AddSession();
 
+            // Add application services.
+            services.AddTransient<IServicoLogin, ServicoLogin>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

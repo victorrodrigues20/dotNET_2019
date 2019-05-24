@@ -1,10 +1,13 @@
 using dotNET_2019.Dados;
 using dotNET_2019.Models;
+using dotNET_2019.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace dotNET_2019.Controllers
 {
@@ -12,9 +15,14 @@ namespace dotNET_2019.Controllers
     {
         private readonly BibliotecaDbContext _context;
 
-        public CarrinhoController(BibliotecaDbContext context)
+        private IServicoLogin _servicoLogin;
+
+        public CarrinhoController(BibliotecaDbContext context,
+            IServicoLogin servicoLogin)
+
         {
             _context = context;
+            _servicoLogin = servicoLogin;
         }
 
         // GET: Carrinho
@@ -53,6 +61,57 @@ namespace dotNET_2019.Controllers
         {
             string carrinhoStr = JsonConvert.SerializeObject(carrinho);
             HttpContext.Session.SetString("Carrinho", carrinhoStr);
+        }
+
+        // POST: EmprestarLivros
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EmprestarLivros()
+        {
+            // Verificamos se o usuário está logado
+            if (_servicoLogin.UsuarioLogado())
+            {
+                // Pegar ID do Usuário (utilizando o serviço que criamos)
+                var usuario = _servicoLogin.RecuperarUsuario();
+
+                // Criar empréstimo
+                Emprestimo emprestimo = new Emprestimo()
+                {
+                    DataInicio = DateTime.Now.ToString("dd/MM/yyyy"),
+                    DataFim = DateTime.Now.AddDays(7).ToString("dd/MM/yyyy"),
+                    Usuario = usuario,
+                    LivEmprestimo = new List<LivroEmprestimo>()
+                };
+
+                // Resgatar lista de livros no carrinho
+                List<Livro> listaLivros = GetCarrinho();
+
+                // Inserir a lista de livros na tabela LivroEmprestimo
+                foreach (var item in listaLivros)
+                {
+                    LivroEmprestimo livroEmprestimo = new LivroEmprestimo();
+                    livroEmprestimo.LivroID = item.LivroID;
+                    livroEmprestimo.Emprestimo = emprestimo;
+
+                    emprestimo.LivEmprestimo.Add(livroEmprestimo);
+                }
+
+                // Inserir o novo empréstimo na tabela
+                _context.Add(emprestimo);
+                await _context.SaveChangesAsync();
+
+                // Alertas do site (utilizando TempData)
+                TempData["MsgAlert"] = "Empréstimo realizado com sucesso!";
+                TempData["MsgEstilo"] = "alert-success";
+            }
+            else
+            {
+                // Alerta do site (utilizando TempData)
+                TempData["MsgAlert"] = "Faça Login de sua aplicação!";
+                TempData["MsgEstilo"] = "alert-danger";
+            }
+
+            return View("Index", GetCarrinho());
         }
     }
 }
