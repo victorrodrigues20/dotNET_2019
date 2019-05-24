@@ -84,7 +84,7 @@ namespace dotNET_2019.Dados
 
         public DbSet<dotNET_2019.Models.Livro> Livro { get; set; }
 
-        //public DbSet<dotNET_2019.Models.Categoria> Categoria { get; set; }
+        // //public DbSet<dotNET_2019.Models.Categoria> Categoria { get; set; }
 
         public DbSet<dotNET_2019.Models.Autor> Autor { get; set; }
 

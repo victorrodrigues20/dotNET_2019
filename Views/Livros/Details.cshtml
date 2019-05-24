@@ -1,13 +1,12 @@
 @model dotNET_2019.Models.Livro
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalhes";
 }
 
-<h1>Details</h1>
+<h1>Detalhes do Livro</h1>
 
 <div>
-    <h4>Livro</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -47,6 +46,6 @@
 </dd>
 
 <div>
-    <a asp-action="Edit" asp-route-id="@Model.LivroID">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.LivroID">Editar</a> |
+    <a asp-action="Index">Voltar</a>
 </div>

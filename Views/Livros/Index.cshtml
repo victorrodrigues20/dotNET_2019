@@ -4,24 +4,22 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Cadastro de Livros</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-success">Novo</a>
 </p>
 
 <form asp-action="Index" method="post">
     <div class="form-actions no-color">
         <p>
             @Html.DisplayNameFor(model => model.Titulo):&nbsp;<input type="text" name="filtroPesquisa" value="@ViewBag.filtroPesquisa" />
-            <br>
-
+            &nbsp;|&nbsp;
             Quantidade:&nbsp;<input type="text" name="filtroQuantidadeMin" 
-                value="@ViewBag.filtroQuantidadeMin" />
-            até &nbsp;<input type="text" name="filtroQuantidadeMax" 
+                value="@ViewBag.filtroQuantidadeMin" />&nbsp;até&nbsp;<input type="text" name="filtroQuantidadeMax" 
                 value="@ViewBag.filtroQuantidadeMax" />
 
-            <input type="submit" value="Pesquisar" class="btn btn-default" /> |
+            <input type="submit" value="Pesquisar" class="btn btn-primary" />
             <a class="btn btn-danger" asp-action="Index">Limpar</a>
         </p>
     </div>
@@ -50,9 +48,12 @@
                 @Html.DisplayFor(modelItem => item.Quantidade)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.LivroID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.LivroID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.LivroID">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.LivroID">
+                    <i class="far fa-edit" title="Editar"></i></a>
+                <a asp-action="Details" asp-route-id="@item.LivroID">
+                    <i class="fas fa-eye" title="Detalhes"></i></a>
+                <a asp-action="Delete" asp-route-id="@item.LivroID">
+                    <i class="fas fa-trash" title="Excluir"></i></a>
             </td>
         </tr>
 }

@@ -1,12 +1,10 @@
 @model dotNET_2019.Models.Livro
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Deletar";
 }
 
-<h1>Delete</h1>
-
-<h3>Are you sure you want to delete this?</h3>
+<h3>Você gostaria de excluir o registro?</h3>
 <div>
     <h4>Livro</h4>
     <hr />
@@ -28,6 +26,6 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="LivroID" />
         <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <a asp-action="Index">Voltar</a>
     </form>
 </div>
