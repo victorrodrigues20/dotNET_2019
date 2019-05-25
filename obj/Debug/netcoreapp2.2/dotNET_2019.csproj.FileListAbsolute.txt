@@ -23,6 +23,13 @@ D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Autores\Edit.g.cshtml.
 D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Autores\Index.g.cshtml.cs
 D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Calculadora\Index.g.cshtml.cs
 D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Calculadora\Somar.g.cshtml.cs
+D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Carrinho\Index.g.cshtml.cs
+D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Emprestimos\Create.g.cshtml.cs
+D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Emprestimos\Delete.g.cshtml.cs
+D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Emprestimos\Details.g.cshtml.cs
+D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Emprestimos\Edit.g.cshtml.cs
+D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Emprestimos\Index.g.cshtml.cs
+D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Home\Components\ListagemLivros\Default.g.cshtml.cs
 D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.g.cshtml.cs
 D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cs
 D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Livros\Create.g.cshtml.cs
@@ -43,5 +50,3 @@ D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\dotNET_2019.Views.pdb
 D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\dotNET_2019.dll
 D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\dotNET_2019.pdb
 D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\dotNET_2019.csproj.CopyComplete
-D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Home\Components\ListagemLivros\Default.g.cshtml.cs
-D:\GitHub\dotNET_2019\obj\Debug\netcoreapp2.2\Razor\Views\Carrinho\Index.g.cshtml.cs

@@ -12,6 +12,7 @@ namespace dotNET_2019.Models
         public int EmprestimoID { get; set; }
 
         public int UsuarioID { get; set; }
+
         public virtual Usuario Usuario { get; set; }
 
         public string DataInicio { get; set; }
